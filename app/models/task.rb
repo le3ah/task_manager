@@ -1,6 +1,7 @@
 require 'sqlite3'
 
 class Task
+  attr_reader :title, :description
   def initialize(task_params)
     @description = task_params["description"]
     @title       = task_params["title"]
@@ -18,6 +19,6 @@ class Task
     tasks = database.execute("SELECT * FROM tasks")
     tasks.map do |task|
       Task.new(task)
-    end 
+    end
   end
 end
